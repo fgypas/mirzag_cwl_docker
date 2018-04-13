@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 
 # basic installation
 RUN apt-get update && \
-    apt-get install -y vim wget curl git build-essential python python-dev python-pip && \
+    apt-get install -y vim wget curl git build-essential ruby python python-dev python-pip && \
     python -m pip install pip --upgrade && \
     python -m pip install wheel
 
@@ -16,12 +16,9 @@ RUN cd $HOME && \
 RUN wget http://www.clipz.unibas.ch/mirzag/mirza.tar.gz && \
     tar xzvf mirza.tar.gz && \
     rm mirza.tar.gz && \
-    mv mirza MIRZA && \
-    ln -s /MIRZA/bin/make_html_noupdate.pl /usr/bin/make_html_noupdate.pl && \
-    ln -s /MIRZA/bin/make_html_update.pl /usr/bin/make_html_update.pl && \
-    ln -s /MIRZA/bin/parseInput.pl /usr/bin/parseInput.pl && \
-    ln -s /MIRZA/bin/parser.sh /usr/bin/parser.sh && \
-    ln -s /MIRZA/bin/sorttable.js /usr/bin/sorttable.js
+    cd mirza && \
+    sed -i 's/EXP\t=--export-dynamic/#EXP\t=--export-dynamic/' makefile && \
+    ./install.sh
 
 # install contrafold
 RUN wget http://contra.stanford.edu/contrafold/contrafold_v2_02.tar.gz && \
