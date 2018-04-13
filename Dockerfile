@@ -16,12 +16,12 @@ RUN cd $HOME && \
 RUN wget http://www.clipz.unibas.ch/mirzag/mirza.tar.gz && \
     tar xzvf mirza.tar.gz && \
     rm mirza.tar.gz && \
-    cd mirza && \
-    ln -s make_html_noupdate.pl /usr/bin/make_html_noupdate.pl && \
-    ln -s make_html_update.pl /usr/bin/make_html_update.pl && \
-    ln -s parseInput.pl /usr/bin/parseInput.pl && \
-    ln -s parser.sh /usr/bin/parser.sh && \
-    ln -s sorttable.js /usr/bin/sorttable.js
+    mv mirza MIRZA && \
+    ln -s /MIRZA/bin/make_html_noupdate.pl /usr/bin/make_html_noupdate.pl && \
+    ln -s /MIRZA/bin/make_html_update.pl /usr/bin/make_html_update.pl && \
+    ln -s /MIRZA/bin/parseInput.pl /usr/bin/parseInput.pl && \
+    ln -s /MIRZA/bin/parser.sh /usr/bin/parser.sh && \
+    ln -s /MIRZA/bin/sorttable.js /usr/bin/sorttable.js
 
 # install contrafold
 RUN wget http://contra.stanford.edu/contrafold/contrafold_v2_02.tar.gz && \
