@@ -18,7 +18,8 @@ RUN wget http://www.clipz.unibas.ch/mirzag/mirza.tar.gz && \
     rm mirza.tar.gz && \
     cd mirza && \
     sed -i 's/EXP\t=--export-dynamic/#EXP\t=--export-dynamic/' makefile && \
-    ./install.sh
+    ./install.sh && \
+    ln -s /mirza/bin/MIRZA /usr/bin/MIRZA
 
 # install contrafold
 RUN wget http://contra.stanford.edu/contrafold/contrafold_v2_02.tar.gz && \
